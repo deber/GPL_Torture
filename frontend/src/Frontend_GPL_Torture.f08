@@ -5,9 +5,15 @@
 ! Written by Denis Bernard.
 !
 Program Frontend_GPL_Torture
-   use, intrinsic ::  iso_fortran_env, only: output_unit
+   use, intrinsic ::  iso_fortran_env, only: input_unit, output_unit
    implicit none
+!   
+   interface
+      subroutine sync() bind(c)
+      end subroutine sync
+   end interface
 !
+   character(len=*), parameter :: gpl_file = 'gpl3.txt'
    character(len=*), parameter :: gpl3_1=&
    include 'gpl-3_1.inc'
    character(len=*), parameter :: gpl3_2=&
@@ -15,14 +21,29 @@ Program Frontend_GPL_Torture
    character(len=*), parameter :: gpl3_3=&
    include 'gpl-3_3.inc'
    character(len=*), parameter :: gpl3=gpl3_1 // gpl3_2 // gpl3_3
-   integer :: ios, lu_gpl3
+   integer :: amount, ios, lu_gpl3, size_of_gpl_file, t(8) 
    character(len=256) :: system_msg=""
 !
+   enum, bind(c)
+      enumerator :: year=1, month, day, hour=5, min, sec, ms
+   end enum
+!
+   write(&
+        unit    = output_unit,&
+        fmt     = '(a)',&
+        advance = 'no'&
+          ) "How many files you want to be generated? Please, enter a number: "
+   read (&
+        unit   =  input_unit,&
+        fmt    = '(i6)',&
+        iostat = ios,&
+        iomsg  = system_msg&        
+        ) amount
+   if (ios /= 0) call finalyse()        
    open(&
        newunit= lu_gpl3,&
-       file   = 'gpl3.txt',&
+       file   =  gpl_file,&
        action = 'write',&
-       status = 'new',&
        iostat = ios,&
        iomsg  = system_msg&
        )
@@ -34,7 +55,26 @@ Program Frontend_GPL_Torture
         iomsg  = system_msg&
         ) gpl3
    if (ios /= 0) call finalyse()
-!
+   close(unit = lu_gpl3)
+   inquire(&
+          file = gpl_file,&
+          size = size_of_gpl_file,&
+        iostat = ios,&                
+        iomsg  = system_msg&          
+        )
+   if (ios /= 0) call finalyse()
+   print'("File ",a,", size=",g0, " bytes created")', gpl_file, size_of_gpl_file
+   write(&   
+        unit    = output_unit,&   
+        fmt     = '(a)',&   
+        advance = 'no'&!
+          ) "Run system call sync()... "
+   call sync()       
+   print'("done")'
+   call date_and_time(values= t(1:8))
+   print'(i0.4,"-",i0.2,"-",i0.2,"  ",i0.2,":",i0.2,":",i0.2,".",i0.3)',&
+         t(year), t(month), t(day), t(hour),t(min),t(sec),t(ms)
+!   
    contains
 !
    subroutine finalyse()
