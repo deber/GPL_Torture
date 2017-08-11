@@ -39,7 +39,7 @@ Program Frontend_GPL_Torture
         iostat = ios,&
         iomsg  = system_msg&        
         ) amount
-   if (ios /= 0) call finalyse()        
+   if (ios /= 0) call finalize()        
    open(&
        newunit= lu_gpl3,&
        file   =  gpl_file,&
@@ -47,14 +47,14 @@ Program Frontend_GPL_Torture
        iostat = ios,&
        iomsg  = system_msg&
        )
-   if (ios /= 0) call finalyse()    
+   if (ios /= 0) call finalize()    
    write(&
         unit   = lu_gpl3,&
         fmt    ='(a)',&
         iostat = ios,&        
         iomsg  = system_msg&
         ) gpl3
-   if (ios /= 0) call finalyse()
+   if (ios /= 0) call finalize()
    close(unit = lu_gpl3)
    inquire(&
           file = gpl_file,&
@@ -62,7 +62,7 @@ Program Frontend_GPL_Torture
         iostat = ios,&                
         iomsg  = system_msg&          
         )
-   if (ios /= 0) call finalyse()
+   if (ios /= 0) call finalize()
    print'("File ",a,", size=",g0, " bytes created")', gpl_file, size_of_gpl_file
    write(&   
         unit    = output_unit,&   
@@ -77,7 +77,8 @@ Program Frontend_GPL_Torture
 !   
    contains
 !
-   subroutine finalyse()
+   subroutine finalize()
       error stop trim(system_msg)
-   end subroutine finalyse
+   end subroutine finalize
+!   
 end program Frontend_GPL_Torture
