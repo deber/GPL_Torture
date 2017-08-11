@@ -1,6 +1,6 @@
 Program Frontend_GPL_Torture
 
-
+print'("Hi!")'
 
 
 
