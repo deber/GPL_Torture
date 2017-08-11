@@ -39,7 +39,8 @@ Program Frontend_GPL_Torture
         iostat = ios,&
         iomsg  = system_msg&        
         ) amount
-   if (ios /= 0) call finalize()        
+   if (ios /= 0) call finalize()
+   if (amount == 0) stop "Bye!"
    open(&
        newunit= lu_gpl3,&
        file   =  gpl_file,&
@@ -57,8 +58,8 @@ Program Frontend_GPL_Torture
    if (ios /= 0) call finalize()
    close(unit = lu_gpl3)
    inquire(&
-          file = gpl_file,&
-          size = size_of_gpl_file,&
+          file   = gpl_file,&
+          size   = size_of_gpl_file,&
           iostat = ios,&                
           iomsg  = system_msg&          
           )
