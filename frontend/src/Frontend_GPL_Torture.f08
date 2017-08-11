@@ -32,7 +32,7 @@ Program Frontend_GPL_Torture
         unit    = output_unit,&
         fmt     = '(a)',&
         advance = 'no'&
-          ) "How many files you want to be generated? Please, enter a number: "
+        ) "How many files do you want to be generated? Please, enter a number: "
    read (&
         unit   =  input_unit,&
         fmt    = '(i6)',&
@@ -59,16 +59,16 @@ Program Frontend_GPL_Torture
    inquire(&
           file = gpl_file,&
           size = size_of_gpl_file,&
-        iostat = ios,&                
-        iomsg  = system_msg&          
-        )
+          iostat = ios,&                
+          iomsg  = system_msg&          
+          )
    if (ios /= 0) call finalize()
    print'("File ",a,", size=",g0, " bytes created")', gpl_file, size_of_gpl_file
    write(&   
         unit    = output_unit,&   
         fmt     = '(a)',&   
         advance = 'no'&!
-          ) "Run system call sync()... "
+        ) "Run system call sync()... "
    call sync()       
    print'("done")'
    call date_and_time(values= t(1:8))
