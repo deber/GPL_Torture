@@ -158,7 +158,7 @@
 "    under certain conditions; type `show c' for details." // new_line('a') // &
 "" // new_line('a') // &
 "The hypothetical commands `show w' and `show c' should show the appropriate" // new_line('a') // &
-"parts of the General Public License.  Of course, your program'./tortures commands" // new_line('a') // &
+"parts of the General Public License.  Of course, your program's commands" // new_line('a') // &
 "might be different; for a GUI interface, you would use an ""about box""." // new_line('a') // &
 "" // new_line('a') // &
 "  You should also get your employer (if you work as a programmer) or school," // new_line('a') // &
@@ -171,4 +171,4 @@
 "may consider it more useful to permit linking proprietary applications with" // new_line('a') // &
 "the library.  If this is what you want to do, use the GNU Lesser General" // new_line('a') // &
 "Public License instead of this License.  But first, please read" // new_line('a') // &
-"<http://www.gnu.org/philosophy/why-not-lgpl.html>." // new_line('a')
+"<http://www.gnu.org/philosophy/why-not-lgpl.html>."
