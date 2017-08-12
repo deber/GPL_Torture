@@ -4,9 +4,10 @@
 ! There is NO WARRANTY, to the extent permitted by law.
 ! Written by Denis Bernard.
 !
-Program Frontend_GPL_Torture
-   use, intrinsic ::  iso_fortran_env, only: input_unit, output_unit
-   implicit none
+Program frontend_gpl_torture
+   use :: frontend_gpl_torture_mod
+!   use, intrinsic ::  iso_fortran_env, only: input_unit, output_unit
+!   implicit none
 !   
    interface
       subroutine sync() bind(c)
@@ -82,4 +83,4 @@ Program Frontend_GPL_Torture
       error stop trim(system_msg)
    end subroutine finalize
 !   
-end program Frontend_GPL_Torture
+end program frontend_gpl_torture
