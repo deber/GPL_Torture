@@ -17,3 +17,7 @@ Timing are exagerated because of the overhead due to stack looking for
 executable. To get a really accurate timer, localize the executable
 inside the `.stack` directory (watch output of `stack build`) and run
 it directly.
+
+# Notes
+
+The index and pagination uses the existing files in numerical order. It means that if your directory only contains page 1, 5, and 8, the next and previous of 5 are respectively 8 and 1.
