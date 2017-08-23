@@ -1,0 +1,42 @@
+name:                haskell
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/guibou/GPL_Torture#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Guillaume Bouchard
+maintainer:          guillaum.bouchard@gmail.com
+copyright:           2017 Guillaume Bouchard
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+executable Torture1
+  hs-source-dirs:      app
+  main-is:             Torture1.hs
+  ghc-options:         -O2 -Wall
+  build-depends:       base
+                     , filepath
+                     , directory
+                     , bytestring
+                     , optparse-generic
+  default-language:    Haskell2010
+
+executable Torture2
+  hs-source-dirs:      app
+  main-is:             Torture2.hs
+  ghc-options:         -O2 -Wall
+  build-depends:       base
+                     , filepath
+                     , directory
+                     , bytestring
+                     , blaze-html
+                     , filemanip
+                     , optparse-generic
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/guibou/GPL_Torture
