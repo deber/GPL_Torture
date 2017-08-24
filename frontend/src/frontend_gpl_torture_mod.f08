@@ -5,11 +5,11 @@ module frontend_gpl_torture_mod
    character(len = *), parameter :: gpl_file = 'gpl3.txt'
    character(len = *), parameter :: benchmark_conf_file = 'benchmark.conf'
    character(len = *), parameter :: gpl3_1=&
-   include 'gpl-3_1.inc'
+   include 'gpl-3_1.f08'
    character(len = *), parameter :: gpl3_2=&
-   include 'gpl-3_2.inc'
+   include 'gpl-3_2.f08'
    character(len = *), parameter :: gpl3_3=&
-   include 'gpl-3_3.inc'
+   include 'gpl-3_3.f08'
    character(len = *), parameter :: gpl3=gpl3_1 // gpl3_2 // gpl3_3
 !
    integer :: amount, ios, lu_benchmark_conf, lu_gpl3
