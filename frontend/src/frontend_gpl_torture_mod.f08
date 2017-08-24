@@ -12,7 +12,7 @@ module frontend_gpl_torture_mod
    character(len=*), parameter :: gpl3=gpl3_1 // gpl3_2 // gpl3_3
 !
    integer :: amount, ios, lu_gpl3
-   character(len=256) :: system_msg=""
+   character(len=256) :: system_msg = ""
 !
    interface
       subroutine sync() bind(c)
@@ -22,21 +22,21 @@ module frontend_gpl_torture_mod
 contains
 !
    subroutine gpl_generator()
-      open(newunit= lu_gpl3, file= gpl_file, action= 'write',iostat= ios, iomsg = system_msg)
+      open (newunit = lu_gpl3, file = gpl_file, action = 'write',iostat = ios, iomsg = system_msg)
       if (ios /= 0) call finalize()
-      write(unit= lu_gpl3, fmt='(a)',iostat= ios, iomsg= system_msg&
+      write (unit = lu_gpl3, fmt ='(a)',iostat = ios, iomsg = system_msg&
            &) gpl3
       if (ios /= 0) call finalize()
-      close(unit= lu_gpl3)
+      close (unit = lu_gpl3)
       if (ios /= 0) call finalize()
-      print'(3a)', "File ", gpl_file, " created"
+      print '(3a)', "File ", gpl_file, " created"
    end subroutine gpl_generator
 !
    subroutine force_sync()
-      write(unit= output_unit, fmt= '(a)', advance= 'no'&
+      write (unit = output_unit, fmt = '(a)', advance = 'no'&
            &) "Run system call sync()... "
       call sync()
-      print'("done")'
+      print '("done")'
    end subroutine force_sync
 !
    subroutine finalize()
