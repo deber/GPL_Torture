@@ -1,4 +1,4 @@
 # GPL_Torture
 ### I/O Disk Benchmark
 
-Coming soon...
+Coming soon... Read the Wiki!
