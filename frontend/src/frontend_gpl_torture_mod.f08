@@ -1,16 +1,10 @@
 module frontend_gpl_torture_mod
    use, intrinsic ::  iso_fortran_env, only: input_unit, output_unit
+   use gpl3_mod, only: license_gpl3
    implicit none
 !
    character(len = *), parameter :: gpl_file = 'gpl3.txt'
    character(len = *), parameter :: benchmark_conf_file = 'benchmark.conf'
-   character(len = *), parameter :: gpl3_1=&
-   include 'gpl-3_1.f08'
-   character(len = *), parameter :: gpl3_2=&
-   include 'gpl-3_2.f08'
-   character(len = *), parameter :: gpl3_3=&
-   include 'gpl-3_3.f08'
-   character(len = *), parameter :: gpl3=gpl3_1 // gpl3_2 // gpl3_3
 !
    integer :: ios, lu_benchmark_conf, lu_gpl3
    integer(kind=2) :: amount
@@ -36,7 +30,7 @@ contains
       open (newunit = lu_gpl3, file = gpl_file, action = 'write', iostat = ios, iomsg = system_msg)
       if (ios /= 0) call finalize()
       write (unit = lu_gpl3, fmt ='(a)', iostat = ios, iomsg = system_msg&
-           &) gpl3
+           &) license_gpl3
       if (ios /= 0) call finalize()
       close (unit = lu_gpl3)
       if (ios /= 0) call finalize()
