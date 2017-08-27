@@ -56,7 +56,7 @@ program gpltorture_fortran
         "</head>" // new_line('a') //&
         "<body>" // new_line('a') //&
         "<h1>GPL_Torture</h1>" // new_line('a') //&
-        "<nav>" // new_line('a') //
+        "<nav>" // new_line('a') //&
         "<hr />" // new_line('a') //&
         "<a href=""index.html"">[ << ]</a>&nbsp;" // new_line('a') //&
         "<a href=" // "page_"// previous // ".html" //">[ < ]</a>&nbsp;" // new_line('a') //&
