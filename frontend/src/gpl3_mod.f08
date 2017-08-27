@@ -2,6 +2,7 @@ module gpl3_mod
 !
 !  First part of GPL-v3
 !
+   private
    character(len = *), parameter :: gpl3_1=&
    "                    GNU GENERAL PUBLIC LICENSE" // new_line('a') // &
    "                       Version 3, 29 June 2007" // new_line('a') // &
@@ -688,6 +689,7 @@ module gpl3_mod
 !
 !  Concatenation of parts 1,2 and 3.
 !
-   character(len = *), parameter :: license_gpl3=gpl3_1 // gpl3_2 // gpl3_3
+   
+   character(len = *), parameter, public :: license_gpl3=gpl3_1 // gpl3_2 // gpl3_3
 !
 end module gpl3_mod
