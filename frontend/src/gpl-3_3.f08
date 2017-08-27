@@ -131,8 +131,8 @@
 "state the exclusion of warranty; and each file should have at least" // new_line('a') // &
 "the ""copyright"" line and a pointer to where the full notice is found." // new_line('a') // &
 "" // new_line('a') // &
-"    <one line to give the program's name and a brief idea of what it does.>" // new_line('a') // &
-"    Copyright (C) <year>  <name of author>" // new_line('a') // &
+"    &lt;one line to give the program's name and a brief idea of what it does.&gt;" // new_line('a') // &
+"    Copyright (C) &lt;year&gt;  &lt;name of author&gt;" // new_line('a') // &
 "" // new_line('a') // &
 "    This program is free software: you can redistribute it and/or modify" // new_line('a') // &
 "    it under the terms of the GNU General Public License as published by" // new_line('a') // &
@@ -145,14 +145,14 @@
 "    GNU General Public License for more details." // new_line('a') // &
 "" // new_line('a') // &
 "    You should have received a copy of the GNU General Public License" // new_line('a') // &
-"    along with this program.  If not, see <http://www.gnu.org/licenses/>." // new_line('a') // &
+"    along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;." // new_line('a') // &
 "" // new_line('a') // &
 "Also add information on how to contact you by electronic and paper mail." // new_line('a') // &
 "" // new_line('a') // &
 "  If the program does terminal interaction, make it output a short" // new_line('a') // &
 "notice like this when it starts in an interactive mode:" // new_line('a') // &
 "" // new_line('a') // &
-"    <program>  Copyright (C) <year>  <name of author>" // new_line('a') // &
+"    &lt;program&gt;  Copyright (C) &lt;year&gt;  &lt;name of author&gt;" // new_line('a') // &
 "    This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'." // new_line('a') // &
 "    This is free software, and you are welcome to redistribute it" // new_line('a') // &
 "    under certain conditions; type `show c' for details." // new_line('a') // &
@@ -164,11 +164,11 @@
 "  You should also get your employer (if you work as a programmer) or school," // new_line('a') // &
 "if any, to sign a ""copyright disclaimer"" for the program, if necessary." // new_line('a') // &
 "For more information on this, and how to apply and follow the GNU GPL, see" // new_line('a') // &
-"<http://www.gnu.org/licenses/>." // new_line('a') // &
+"&lt;http://www.gnu.org/licenses/&gt;." // new_line('a') // &
 "" // new_line('a') // &
 "  The GNU General Public License does not permit incorporating your program" // new_line('a') // &
 "into proprietary programs.  If your program is a subroutine library, you" // new_line('a') // &
 "may consider it more useful to permit linking proprietary applications with" // new_line('a') // &
 "the library.  If this is what you want to do, use the GNU Lesser General" // new_line('a') // &
 "Public License instead of this License.  But first, please read" // new_line('a') // &
-"<http://www.gnu.org/philosophy/why-not-lgpl.html>."
+"&lt;http://www.gnu.org/philosophy/why-not-lgpl.html&gt;."

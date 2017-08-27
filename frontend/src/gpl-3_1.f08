@@ -1,7 +1,7 @@
 "                    GNU GENERAL PUBLIC LICENSE" // new_line('a') // &
 "                       Version 3, 29 June 2007" // new_line('a') // &
 "" // new_line('a') // &
-" Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>" // new_line('a') // &
+" Copyright (C) 2007 Free Software Foundation, Inc. &lt;http://fsf.org/&gt;" // new_line('a') // &
 " Everyone is permitted to copy and distribute verbatim copies" // new_line('a') // &
 " of this license document, but changing it is not allowed." // new_line('a') // &
 "" // new_line('a') // &
