@@ -12,7 +12,8 @@ module frontend_gpl_torture_mod
    include 'gpl-3_3.f08'
    character(len = *), parameter :: gpl3=gpl3_1 // gpl3_2 // gpl3_3
 !
-   integer :: amount, ios, lu_benchmark_conf, lu_gpl3
+   integer :: ios, lu_benchmark_conf, lu_gpl3
+   integer(kind=2) :: amount
    character(len=256) :: system_msg = ""
 !
    interface

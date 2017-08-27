@@ -11,8 +11,8 @@ Program frontend_gpl_torture
    implicit none
 !
    write (unit = output_unit, fmt = '(a)', advance = 'no'&
-        &) "How many files do you want to be generated? Please, enter a number: "
-   read (unit = input_unit, fmt = '(i6)', iostat = ios, iomsg = system_msg&
+        &) "How many files do you want to be generated? (32767 maxi) Please, enter a number: "
+   read (unit = input_unit, fmt = '(i5)', iostat = ios, iomsg = system_msg&
         &) amount
    if (ios /= 0) call finalize()
    if (amount < 1 ) stop "Bye!"
