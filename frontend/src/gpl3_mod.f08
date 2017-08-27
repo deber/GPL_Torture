@@ -689,7 +689,6 @@ module gpl3_mod
 !
 !  Concatenation of parts 1,2 and 3.
 !
-   
-   character(len = *), parameter, public :: license_gpl3=gpl3_1 // gpl3_2 // gpl3_3
+   character(len = *), parameter, public :: license_gpl3 = gpl3_1 // gpl3_2 // gpl3_3
 !
 end module gpl3_mod
