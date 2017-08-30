@@ -35,7 +35,7 @@ program gpltorture_fortran
 !
 !> 3. Build HTML pages
 !
-  write(unit =last, fmt ='(i0.5)') amount
+  write(unit = last, fmt ='(i0.5)') amount
   body =&
      "<pre>" // new_line('a') //&
       gpl3 // new_line('a')
@@ -43,9 +43,9 @@ program gpltorture_fortran
 !> 3.1 Build HTML pages (from second one untill the previous of the last one)
 !
   do i = 2, amount-1
-     write(unit =pg_nbr, fmt ='(i0.5)') i
-     write(unit =next, fmt ='(i0.5)') i + 1
-     write(unit =previous, fmt ='(i0.5)') i - 1
+     write(unit = pg_nbr, fmt ='(i0.5)') i
+     write(unit = next, fmt ='(i0.5)') i + 1
+     write(unit = previous, fmt ='(i0.5)') i - 1
      write(unit = page, fmt ='(a)') "page_" // pg_nbr // ".html"
      header =&
         "<!DOCTYPE html>" // new_line('a') //&

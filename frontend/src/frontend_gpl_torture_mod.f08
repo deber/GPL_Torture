@@ -1,3 +1,9 @@
+! Copyright (C) 2017 Denis Bernard.
+! License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+! This is free software: you are free to change and redistribute it.
+! There is NO WARRANTY, to the extent permitted by law.
+! Written by Denis Bernard.
+!
 module frontend_gpl_torture_mod
    use, intrinsic ::  iso_fortran_env, only: input_unit, output_unit
    use gpl3_mod, only: license_gpl3
@@ -7,8 +13,8 @@ module frontend_gpl_torture_mod
    character(len = *), parameter :: gpltorture_conf_file = 'gpltorture.conf'
 !
    integer :: ios, lu_gpltorture_conf, lu_gpl3
-   integer(kind=2) :: amount
-   character(len=256) :: system_msg = ""
+   integer(kind = 2) :: amount
+   character(len = 256) :: system_msg = ""
 !
    interface
       subroutine sync() bind(c)
