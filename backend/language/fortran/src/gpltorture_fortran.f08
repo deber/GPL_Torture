@@ -82,9 +82,6 @@ program gpltorture_fortran
      if (ios /= 0) error stop trim(system_msg)
      close (unit = lu_page)
      if (ios /= 0) error stop trim(system_msg)
-!     deallocate (buffer)
-!     deallocate (footer)
-!     deallocate (header)
   end do
 !
   deallocate (buffer)
