@@ -6,7 +6,7 @@
 ! Written by Denis Bernard.
 !
 Program frontend_gpl_torture
-   use :: frontend_gpl_torture_mod, only: amount, benchmark_conf, finalize, gpl_generator, input_unit, ios, force_sync,&
+   use :: frontend_gpl_torture_mod, only: amount, gpltorture_conf, finalize, gpl_generator, input_unit, ios, force_sync,&
    &system_msg, output_unit
    implicit none
 !
@@ -16,7 +16,7 @@ Program frontend_gpl_torture
         &) amount
    if (ios /= 0) call finalize()
    if (amount < 1 ) stop "Bye!"
-   call benchmark_conf()
+   call gpltorture_conf()
    call gpl_generator()
    call force_sync()
 !

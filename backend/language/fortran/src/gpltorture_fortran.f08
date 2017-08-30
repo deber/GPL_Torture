@@ -9,9 +9,9 @@ program gpltorture_fortran
 !
    integer, parameter :: size_of_gpl_file = 35207
    character(len = *), parameter :: gpl_file = 'gpl3.txt'
-   character(len = *), parameter :: benchmark_conf_file = 'benchmark.conf'
+   character(len = *), parameter :: gpltorture_conf_file = 'benchmark.conf'
    integer(kind =2) :: amount
-   integer :: i, ios, lu_benchmark_conf, lu_gpl3, lu_page
+   integer :: i, ios, lu_gpltorture_conf, lu_gpl3, lu_page
    character(len = 5) :: last, next, pg_nbr, previous
    character(len = len(pg_nbr) + 10) :: page
    character(len = 256) :: system_msg = ""
@@ -20,11 +20,11 @@ program gpltorture_fortran
 !
 !> 1. Read the amount from config file
 !
-   open (newunit = lu_benchmark_conf, file = benchmark_conf_file, action = 'read', iostat = ios, iomsg = system_msg)
+   open (newunit = lu_gpltorture_conf, file = gpltorture_conf_file, action = 'read', iostat = ios, iomsg = system_msg)
    if (ios /= 0) error stop trim(system_msg)
-   read (unit = lu_benchmark_conf, fmt = *) amount
+   read (unit = lu_gpltorture_conf, fmt = *) amount
    if (ios /= 0) error stop trim(system_msg)
-   close (unit = lu_benchmark_conf)
+   close (unit = lu_gpltorture_conf)
 !
 !> 2. Load into memory the text of GPL licence
 !

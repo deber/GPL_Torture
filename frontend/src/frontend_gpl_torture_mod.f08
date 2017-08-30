@@ -4,9 +4,9 @@ module frontend_gpl_torture_mod
    implicit none
 !
    character(len = *), parameter :: gpl_file = 'gpl3.txt'
-   character(len = *), parameter :: benchmark_conf_file = 'benchmark.conf'
+   character(len = *), parameter :: gpltorture_conf_file = 'gpltorture.conf'
 !
-   integer :: ios, lu_benchmark_conf, lu_gpl3
+   integer :: ios, lu_gpltorture_conf, lu_gpl3
    integer(kind=2) :: amount
    character(len=256) :: system_msg = ""
 !
@@ -17,14 +17,14 @@ module frontend_gpl_torture_mod
 !
 contains
 !
-   subroutine benchmark_conf()
-      open (newunit = lu_benchmark_conf, file = benchmark_conf_file, action = 'write', iostat = ios, iomsg = system_msg)
+   subroutine gpltorture_conf()
+      open (newunit = lu_gpltorture_conf, file = gpltorture_conf_file, action = 'write', iostat = ios, iomsg = system_msg)
       if (ios /= 0) call finalize()
-      write (unit = lu_benchmark_conf, fmt = '(i0)',iostat = ios, iomsg = system_msg&
+      write (unit = lu_gpltorture_conf, fmt = '(i0)',iostat = ios, iomsg = system_msg&
            &) amount
       if (ios /= 0) call finalize()
-      close (unit = lu_benchmark_conf)
-   end subroutine benchmark_conf
+      close (unit = lu_gpltorture_conf)
+   end subroutine gpltorture_conf
 !   
    subroutine gpl_generator()
       open (newunit = lu_gpl3, file = gpl_file, action = 'write', iostat = ios, iomsg = system_msg)
