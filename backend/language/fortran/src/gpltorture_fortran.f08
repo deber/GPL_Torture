@@ -9,7 +9,7 @@ program gpltorture_fortran
 !
    integer, parameter :: size_of_gpl_file = 35207
    character(len = *), parameter :: gpl_file = 'gpl3.txt'
-   character(len = *), parameter :: gpltorture_conf_file = 'benchmark.conf'
+   character(len = *), parameter :: gpltorture_conf_file = 'gpltorture.conf'
    integer(kind =2) :: amount
    integer :: i, ios, lu_gpltorture_conf, lu_gpl3, lu_page
    character(len = 5) :: last, next, pg_nbr, previous
