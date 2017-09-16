@@ -14,7 +14,7 @@ module frontend_gpl_torture_mod
 !
    integer :: ios, lu_gpltorture_conf, lu_gpl3
    integer(kind = 2) :: amount
-   character(len = 256) :: system_msg = ""
+   character(len = 256) :: system_msg = "", usr_msg = ""
 !
    interface
       subroutine sync() bind(c)
@@ -33,24 +33,25 @@ contains
    end subroutine gpltorture_conf
 !   
    subroutine gpl_generator()
+      write(unit = output_unit, fmt = '(3a)', advance = 'no') "Making test file """, gpl_file, """..."
       open (newunit = lu_gpl3, file = gpl_file, action = 'write', iostat = ios, iomsg = system_msg)
       if (ios /= 0) call finalize()
-      write (unit = lu_gpl3, fmt ='(a)', iostat = ios, iomsg = system_msg&
-           &) license_gpl3
+      write (unit = lu_gpl3, fmt ='(a)', iostat = ios, iomsg = system_msg) license_gpl3
       if (ios /= 0) call finalize()
       close (unit = lu_gpl3)
       if (ios /= 0) call finalize()
-      print '(3a)', "File ", gpl_file, " created"
+      print '(a)', " OK"
    end subroutine gpl_generator
 !
    subroutine force_sync()
       write (unit = output_unit, fmt = '(a)', advance = 'no'&
-           &) "Run system call sync()... "
+           &) "Run system call sync(): syncing... "
       call sync()
-      print '("done")'
+      print '(" OK")'
    end subroutine force_sync
 !
    subroutine finalize()
+      if (len_trim(usr_msg) >0 ) print '(a)', trim(usr_msg)
       error stop trim(system_msg)
    end subroutine finalize
 !

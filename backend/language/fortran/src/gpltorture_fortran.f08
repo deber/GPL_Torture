@@ -9,22 +9,43 @@ program gpltorture_fortran
 !
    integer, parameter :: size_of_gpl_file = 35207
    character(len = *), parameter :: gpl_file = 'gpl3.txt'
-   character(len = *), parameter :: gpltorture_conf_file = 'gpltorture.conf'
-   integer(kind =2) :: amount
-   integer :: i, ios, lu_gpltorture_conf, lu_gpl3, lu_page
+   integer(kind = 2) :: amount
+   integer :: argc, i, ios, lu_gpl3, lu_page, m, n
    character(len = 5) :: last, next, pg_nbr, previous
    character(len = len(pg_nbr) + 10) :: page
    character(len = 256) :: system_msg = ""
    character(len = size_of_gpl_file) :: gpl3
-   character(len=:), allocatable :: body, buffer, footer, header
+   character(len = :), allocatable :: body, buffer, footer, header
+   character(len = 32) :: amount_txt = ""
+   character(len = 32),allocatable :: argv(:)
+   character(80) :: cmd
 !
-!> 1. Read the amount from config file
+! Banner
 !
-   open (newunit = lu_gpltorture_conf, file = gpltorture_conf_file, action = 'read', iostat = ios, iomsg = system_msg)
-   if (ios /= 0) error stop trim(system_msg)
-   read (unit = lu_gpltorture_conf, fmt = *) amount
-   if (ios /= 0) error stop trim(system_msg)
-   close (unit = lu_gpltorture_conf)
+   print'(a)', "OK"
+   print'(a)', "Backend for GPL_Torture", "Copyright (C) 2017 Denis Bernard"
+!
+!> 1. Read the amount
+!
+   call get_command(cmd)
+!!!!print'(2a)',"Ligne de commande = ",trim(cmd)
+   argc= command_argument_count()
+!!!!print'(a,g0)',"argc = ", argc
+   allocate (argv (0 : argc))
+   do n = 0, argc
+     call get_command_argument(n, argv(n))
+   end do
+   if (argc == 0 .or. argc > 2) call finalize()
+   do m = 0, argc
+      if (argv(m) == "-n" .or. argv(m) == "--iteration") then
+         if (m >= argc) call finalize()
+         amount_txt = argv(m + 1)
+      end if   
+   end do
+   if (trim(amount_txt) == "") call finalize()
+   read (unit = amount_txt, fmt = *, iostat = ios, iomsg = system_msg ) amount
+   if (ios /= 0 .or. amount < 1) call finalize()
+!!!!!!!print'(3a)',   argv
 !
 !> 2. Load into memory the text of GPL licence
 !
@@ -84,9 +105,18 @@ program gpltorture_fortran
      if (ios /= 0) error stop trim(system_msg)
   end do
 !
-  deallocate (buffer)
-  deallocate (footer)
-  deallocate (header)
-  deallocate (body)
+  if (allocated(buffer)) deallocate (buffer)
+  if (allocated(footer)) deallocate (footer)
+  if (allocated(header)) deallocate (header)
+  if (allocated(body)) deallocate (body)
 !
+  print'(a)', "End of the backend run"
+  stop
+contains
+!
+   subroutine finalize()
+      if (ios /= 0)  print '(a)', trim(system_msg) 
+      error stop new_line('a') // "Usage: " // trim(argv(0)) // " [-n | --iteration] [value (maxi: 32767)]"
+   end subroutine finalize
+!   
 end program gpltorture_fortran
