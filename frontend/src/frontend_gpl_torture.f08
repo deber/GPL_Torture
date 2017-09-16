@@ -1,4 +1,3 @@
-
 ! Copyright (C) 2017 Denis Bernard.
 ! License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 ! This is free software: you are free to change and redistribute it.
@@ -21,13 +20,6 @@ Program frontend_gpl_torture
          import c_int
          integer(c_int) :: fork
       end function fork
-!      function waitpid(pid,status, option) bind(C)
-!         import c_int
-!         integer(c_int), value, intent(in) :: pid
-!         integer(c_int), intent(inout) :: status
-!         integer(c_int), value, intent(in) :: option
-!         integer(c_int) :: waitpid
-!      end function waitpid
       function wait(status) bind(C)
          import c_int
          integer(c_int), intent(inout) :: status
@@ -62,7 +54,7 @@ Program frontend_gpl_torture
    if (pid < 0) call finalize()
    if (pid > 0) write(unit = output_unit, fmt = '(a,i0,a)', advance = 'no') "Run system call fork(): child process ", pid, "... "
    if (pid  == 0) then
-      write (unit = output_unit, fmt = '(a,/,a)', advance = 'no') " OK", "Run system call execvp(): launching backend... "
+      write (unit = output_unit, fmt = '(a,/,a)', advance = 'no') "OK", "Run system call execvp(): launching backend... "
       if (execvp(exec_file, argv) /= 0) then
          usr_msg = "Failed to launch backend"
          call finalize()
