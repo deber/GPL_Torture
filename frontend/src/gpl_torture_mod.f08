@@ -4,7 +4,7 @@
 ! There is NO WARRANTY, to the extent permitted by law.
 ! Written by Denis Bernard.
 !
-module frontend_gpl_torture_mod
+module gpl_torture
    use, intrinsic ::  iso_fortran_env, only: input_unit, output_unit
    use gpl3_mod, only: license_gpl3
    implicit none
@@ -55,4 +55,4 @@ contains
       error stop trim(system_msg)
    end subroutine finalize
 !
-end module frontend_gpl_torture_mod
+end module gpl_torture

@@ -6,7 +6,7 @@
 !
 Program frontend_gpl_torture
    use :: f_libc, only: execvp, fork, wait
-   use :: frontend_gpl_torture_mod, only: amount, gpltorture_conf, finalize, gpl_generator, input_unit, ios, force_sync,&
+   use :: gpl_torture, only: amount, gpltorture_conf, finalize, gpl_generator, input_unit, ios, force_sync,&
    &system_msg, output_unit, usr_msg
    use :: iso_c_binding, only: c_char, c_null_char, c_loc, c_null_ptr, c_ptr, c_int
    implicit none
