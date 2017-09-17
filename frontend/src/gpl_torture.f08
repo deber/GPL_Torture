@@ -15,8 +15,6 @@ Program frontend_gpl_torture
 !
    integer(kind = c_int) :: pid, status, wpid = 1
    character(len = 30, kind = c_char), target :: exec_file, arg1, arg2
-!   character(len = 30, kind = c_char), target :: arg1
-!   character(len = 30, kind = c_char), target :: arg2
    type(c_ptr), target :: argv(0:3)   
 !
    write (unit = output_unit, fmt = '(a/,a)', advance = 'no'&
