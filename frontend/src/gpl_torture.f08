@@ -4,7 +4,7 @@
 ! There is NO WARRANTY, to the extent permitted by law.
 ! Written by Denis Bernard.
 !
-Program frontend_gpl_torture
+Program gpltorture
 !
    use, intrinsic ::  iso_fortran_env, only: input_unit, output_unit
    use, intrinsic :: iso_c_binding, only: c_char, c_null_char, c_loc, c_null_ptr, c_ptr, c_int   
@@ -50,4 +50,4 @@ Program frontend_gpl_torture
    end if
    print'(a)',"Test completed. Bye!"
 !
-end program frontend_gpl_torture
+end program gpltorture
