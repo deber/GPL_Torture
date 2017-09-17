@@ -5,28 +5,29 @@
 ! Written by Denis Bernard.
 !
 Program frontend_gpl_torture
+!
+   use, intrinsic ::  iso_fortran_env, only: input_unit, output_unit
+   use, intrinsic :: iso_c_binding, only: c_char, c_null_char, c_loc, c_null_ptr, c_ptr, c_int   
    use :: f_libc, only: execvp, fork, wait
-   use :: gpl_torture, only: amount, gpltorture_conf, finalize, gpl_generator, input_unit, ios, force_sync,&
-   &system_msg, output_unit, usr_msg
-   use :: iso_c_binding, only: c_char, c_null_char, c_loc, c_null_ptr, c_ptr, c_int
+   use :: gpl_torture, only: amount, gpltorture_conf, finalize, gpl_generator, ios, force_sync, system_msg, usr_msg
+!
    implicit none
 !
    integer(kind = c_int) :: pid, status, wpid = 1
-   character(len = 30, kind = c_char), target :: exec_file
-   character(len = 30, kind = c_char), target :: arg1
-   character(len = 30, kind = c_char), target :: arg2
+   character(len = 30, kind = c_char), target :: exec_file, arg1, arg2
+!   character(len = 30, kind = c_char), target :: arg1
+!   character(len = 30, kind = c_char), target :: arg2
    type(c_ptr), target :: argv(0:3)   
 !
    write (unit = output_unit, fmt = '(a/,a)', advance = 'no'&
         &) "How many files to generate (32767 maxi)?", "Please, enter a number: "
-   read (unit = input_unit, fmt = '(i5)', iostat = ios, iomsg = system_msg&
-        &) amount
+   read (unit = input_unit, fmt = '(i5)', iostat = ios, iomsg = system_msg) amount
    if (ios /= 0) call finalize()
    if (amount < 1 ) then
       usr_msg = "Bad number"
       call finalize()
    end if
-   write(unit = arg2, fmt='(i0)') amount
+   write(unit = arg2, fmt = '(i0)') amount
    exec_file = "gpltorture_fortran" // c_null_char
    arg1 = "-n" // c_null_char
    arg2 = trim(arg2) // c_null_char
@@ -46,7 +47,7 @@ Program frontend_gpl_torture
    end if
    wpid = wait(status)
    if (status /= 0) then
-      write(unit = usr_msg, fmt ='(a,i0,a,i0)') "Child process ", wpid, " failed with status ", status
+      write(unit = usr_msg, fmt = '(a,i0,a,i0)') "Child process ", wpid, " failed with status ", status
       call finalize()
    end if
    print'(a)',"Test completed. Bye!"
