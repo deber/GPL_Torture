@@ -9,6 +9,7 @@ Program gpltorture
    use, intrinsic :: iso_fortran_env, only: input_unit, output_unit
    use, intrinsic :: iso_c_binding, only: c_char, c_null_char, c_loc, c_null_ptr, c_ptr, c_int   
    use :: f_libc, only: execvp, fork, wait
+   use :: time, only: timestamp
    use :: gpl_torture, only: amount, gpltorture_conf, finalize, gpl_generator, ios, force_sync, system_msg, usr_msg
 !
    implicit none
@@ -32,7 +33,9 @@ Program gpltorture
    argv = [c_loc(exec_file), c_loc(arg1), c_loc(arg2), c_null_ptr]
 !  call gpltorture_conf() !!!! DO NOT DELETE
    call gpl_generator()
+   print'(2a)', "Timestamp: ", timestamp()
    call force_sync()
+   print'(2a)', "Timestamp: ", timestamp()
    pid = fork()
    if (pid < 0) call finalize()
    if (pid > 0) write( unit = output_unit, fmt = '(a,i0,a)', advance = 'no') "Call fork(): child process ", pid, "... "
@@ -44,6 +47,7 @@ Program gpltorture
       end if
    end if
    wpid = wait(status)
+   print'(2a)', "Timestamp: ", timestamp()
    if (status /= 0) then
       write (unit = usr_msg, fmt = '(a,i0,a,i0)') "Child process ", wpid, " failed with status ", status
       call finalize()
