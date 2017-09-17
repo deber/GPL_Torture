@@ -5,27 +5,11 @@
 ! Written by Denis Bernard.
 !
 Program frontend_gpl_torture
+   use :: f_libc, only: execvp, fork, wait
    use :: frontend_gpl_torture_mod, only: amount, gpltorture_conf, finalize, gpl_generator, input_unit, ios, force_sync,&
    &system_msg, output_unit, usr_msg
    use :: iso_c_binding, only: c_char, c_null_char, c_loc, c_null_ptr, c_ptr, c_int
    implicit none
-   interface
-      function execvp(file, argv) bind(C)
-         import c_char, c_int, c_ptr
-         character(kind = c_char), intent(in) :: file
-         type(c_ptr), value, intent(in) :: argv
-         integer(c_int) :: execvp
-      end function execvp
-      function fork() bind(C)
-         import c_int
-         integer(c_int) :: fork
-      end function fork
-      function wait(status) bind(C)
-         import c_int
-         integer(c_int), intent(inout) :: status
-         integer(c_int) :: wait
-      end function wait      
-   end interface
 !
    integer(kind = c_int) :: pid, status, wpid = 1
    character(len = 30, kind = c_char), target :: exec_file
@@ -54,7 +38,7 @@ Program frontend_gpl_torture
    if (pid < 0) call finalize()
    if (pid > 0) write(unit = output_unit, fmt = '(a,i0,a)', advance = 'no') "Run system call fork(): child process ", pid, "... "
    if (pid  == 0) then
-      write (unit = output_unit, fmt = '(a,/,a)', advance = 'no') "OK", "Run system call execvp(): launching backend... "
+      write (unit = output_unit, fmt = '(a,/,a)', advance = 'no') "OK", "Run system call execvp(): Running backend... "
       if (execvp(exec_file, argv) /= 0) then
          usr_msg = "Failed to launch backend"
          call finalize()
