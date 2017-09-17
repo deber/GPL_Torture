@@ -32,7 +32,7 @@ contains
    end subroutine gpltorture_conf
 !   
    subroutine gpl_generator()
-      write(unit = output_unit, fmt = '(3a)', advance = 'no') "Making test file """, gpl_file, """..."
+      write (unit = output_unit, fmt = '(3a)', advance = 'no') "Making test file """, gpl_file, """..."
       open (newunit = lu_gpl3, file = gpl_file, action = 'write', iostat = ios, iomsg = system_msg)
       if (ios /= 0) call finalize()
       write (unit = lu_gpl3, fmt ='(a)', iostat = ios, iomsg = system_msg) license_gpl3
@@ -43,10 +43,9 @@ contains
    end subroutine gpl_generator
 !
    subroutine force_sync()
-      write (unit = output_unit, fmt = '(a)', advance = 'no'&
-           &) "Call sync(): syncing... "
+      write (unit = output_unit, fmt = '(a)', advance = 'no') "Call sync(): syncing... "
       call sync()
-      print '(" OK")'
+      print '(a)', " OK"
    end subroutine force_sync
 !
    subroutine finalize()

@@ -25,7 +25,7 @@ Program gpltorture
       usr_msg = "Bad number"
       call finalize()
    end if
-   write(unit = arg2, fmt = '(i0)') amount
+   write (unit = arg2, fmt = '(i0)') amount
    exec_file = "gpltorture_fortran" // c_null_char
    arg1 = "-n" // c_null_char
    arg2 = trim(arg2) // c_null_char
@@ -35,7 +35,7 @@ Program gpltorture
    call force_sync()
    pid = fork()
    if (pid < 0) call finalize()
-   if (pid > 0) write(unit = output_unit, fmt = '(a,i0,a)', advance = 'no') "Call fork(): child process ", pid, "... "
+   if (pid > 0) write( unit = output_unit, fmt = '(a,i0,a)', advance = 'no') "Call fork(): child process ", pid, "... "
    if (pid  == 0) then
       write (unit = output_unit, fmt = '(a,/,a)', advance = 'no') "OK", "Call execvp(): Running backend... "
       if (execvp(exec_file, argv) /= 0) then
@@ -45,7 +45,7 @@ Program gpltorture
    end if
    wpid = wait(status)
    if (status /= 0) then
-      write(unit = usr_msg, fmt = '(a,i0,a,i0)') "Child process ", wpid, " failed with status ", status
+      write (unit = usr_msg, fmt = '(a,i0,a,i0)') "Child process ", wpid, " failed with status ", status
       call finalize()
    end if
    print'(a)',"Test completed. Bye!"
