@@ -6,7 +6,7 @@
 !
 Program gpltorture
 !
-   use, intrinsic ::  iso_fortran_env, only: input_unit, output_unit
+   use, intrinsic :: iso_fortran_env, only: input_unit, output_unit
    use, intrinsic :: iso_c_binding, only: c_char, c_null_char, c_loc, c_null_ptr, c_ptr, c_int   
    use :: f_libc, only: execvp, fork, wait
    use :: gpl_torture, only: amount, gpltorture_conf, finalize, gpl_generator, ios, force_sync, system_msg, usr_msg
@@ -35,11 +35,11 @@ Program gpltorture
    call force_sync()
    pid = fork()
    if (pid < 0) call finalize()
-   if (pid > 0) write(unit = output_unit, fmt = '(a,i0,a)', advance = 'no') "Run system call fork(): child process ", pid, "... "
+   if (pid > 0) write(unit = output_unit, fmt = '(a,i0,a)', advance = 'no') "Call fork(): child process ", pid, "... "
    if (pid  == 0) then
-      write (unit = output_unit, fmt = '(a,/,a)', advance = 'no') "OK", "Run system call execvp(): Running backend... "
+      write (unit = output_unit, fmt = '(a,/,a)', advance = 'no') "OK", "Call execvp(): Running backend... "
       if (execvp(exec_file, argv) /= 0) then
-         usr_msg = "Failed to launch backend"
+         usr_msg = "Failed to run backend"
          call finalize()
       end if
    end if

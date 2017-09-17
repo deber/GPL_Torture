@@ -26,8 +26,7 @@ contains
    subroutine gpltorture_conf()
       open (newunit = lu_gpltorture_conf, file = gpltorture_conf_file, action = 'write', iostat = ios, iomsg = system_msg)
       if (ios /= 0) call finalize()
-      write (unit = lu_gpltorture_conf, fmt = '(i0)',iostat = ios, iomsg = system_msg&
-           &) amount
+      write (unit = lu_gpltorture_conf, fmt = '(i0)',iostat = ios, iomsg = system_msg) amount
       if (ios /= 0) call finalize()
       close (unit = lu_gpltorture_conf)
    end subroutine gpltorture_conf
@@ -45,7 +44,7 @@ contains
 !
    subroutine force_sync()
       write (unit = output_unit, fmt = '(a)', advance = 'no'&
-           &) "Run system call sync(): syncing... "
+           &) "Call sync(): syncing... "
       call sync()
       print '(" OK")'
    end subroutine force_sync
