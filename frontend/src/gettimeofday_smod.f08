@@ -6,6 +6,8 @@
 !
 submodule(time) gettimeofday
 !
+   implicit none
+!
    type, bind(c) :: timeval
       integer(kind = c_long) :: tv_sec
       integer(kind = c_long) :: tv_usec
@@ -17,6 +19,7 @@ submodule(time) gettimeofday
    end type timezone
 !
    contains
+!
    function timestamp()
       character(len = 19) :: sec
       character(len = 6) :: usec
@@ -42,4 +45,5 @@ submodule(time) gettimeofday
       integer(kind = 4) :: f_gettimeofday
       f_gettimeofday = gettimeofday(tv,tz)
    end function f_gettimeofday
+!
 end submodule gettimeofday
