@@ -1,4 +1,4 @@
-module gpl3_mod
+module gpl3
 !
 !  First part of GPL-v3
 !
@@ -691,4 +691,4 @@ module gpl3_mod
 !
    character(len = *), parameter, public :: license_gpl3 = gpl3_1 // gpl3_2 // gpl3_3
 !
-end module gpl3_mod
+end module gpl3

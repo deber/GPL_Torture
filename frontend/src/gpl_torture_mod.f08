@@ -6,7 +6,7 @@
 !
 module gpl_torture
    use, intrinsic ::  iso_fortran_env, only: input_unit, output_unit
-   use gpl3_mod, only: license_gpl3
+   use gpl3, only: license_gpl3
    implicit none
 !
    character(len = *), parameter :: gpl_file = 'gpl3.txt'
